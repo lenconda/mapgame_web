@@ -82,6 +82,12 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 41.4
+            }
+          },
           'sass-loader'
         ]
       },
