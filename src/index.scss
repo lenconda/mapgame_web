@@ -27,9 +27,26 @@
 }
 
 .bg-orange-blue {
+  height: 100%;
+  position: relative;
   background: url('/assets/img/bg_orange_blue.png') 100% / 100% no-repeat;
 }
 
 .bg-blue-orange {
+  height: 100%;
+  position: relative;
   background: url('/assets/img/bg_blue_orange.png') 100% / 100% no-repeat;
+}
+
+.content-card {
+  width: 350px;
+  height: 81.5%;
+  margin: 0 auto;
+  position: absolute;
+  background-color: #fff;
+  bottom: 53.2px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px; /*px*/
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 }

@@ -27,6 +27,7 @@ module.exports = {
       'error',
       2
     ],
+    '@typescript-eslint/no-empty-interface': 'off',
     'eol-last': 2,
     quotes: [2, 'single'],
     'jsx-quotes': ['error', 'prefer-double'],

@@ -1,0 +1,46 @@
+.logo-house {
+  position: absolute;
+  top: 7.2px;
+  left: 33px;
+  width: 308px;
+  height: 246px;
+}
+
+.brief {
+  font-size: 30px;
+  line-height: 30px;
+  color: #707070;
+  font-family: 'source_medium';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 243.2px;
+  text-align: center;
+  width: 284px;
+
+  &.subtitle {
+    top: 321.2px;
+  }
+
+  & > .rank {
+    font-family: 'tensent';
+    font-size: 50px;
+    line-height: 60px;
+    color: #fd796b;
+  }
+}
+
+.start-game-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 62.8px;
+}
+
+.logo-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+  width: 221px;
+}
