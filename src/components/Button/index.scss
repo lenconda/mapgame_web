@@ -1,0 +1,38 @@
+.mg-button {
+  border-radius: 10px; /*no*/
+  background-color: #5077b2;
+  display: inline-block;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 17px 0;
+  font-size: 20px;
+  line-height: 20px;
+  transition: all .3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16); /*px*/
+
+  &.auto {
+    padding: 14px 42px;
+  }
+
+  &.fixed {
+    width: 300px;
+  }
+
+  &.normal {
+    font-family: 'source_normal';
+  }
+
+  &.medium {
+    font-family: 'source_medium';
+  }
+
+  &.font-large {
+    line-height: 22px;
+    font-size: 22px;
+  }
+
+  &:focus, &:active {
+    background-color: #3c5d8e;
+  }
+}
