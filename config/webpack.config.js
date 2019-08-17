@@ -10,13 +10,16 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const env = require('./env.config');
 
 module.exports = {
-  entry: {
-    app: path.resolve(__dirname, '../src/index.tsx')
-  },
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    path.resolve(__dirname, '../src/index.tsx')
+  ],
 
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'static/js/' + (env.isDev ? '[name].bundle.js' : '[name].[contenthash].bundle.js'),
+    filename: 'static/js/' + (env.isDev ? '[name].bundle.js' : '[name].[hash].bundle.js'),
     chunkFilename: 'static/js/' + (env.isDev ? '[name].chunk.js' : '[name].[contenthash].chunk.js'),
     publicPath: env.isDev ? '/' : '/'
   },
@@ -41,6 +44,10 @@ module.exports = {
   },
 
   devtool: 'source-map',
+
+  devServer: {
+    hot: true
+  },
 
   module: {
     rules: [
@@ -111,7 +118,7 @@ module.exports = {
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: path.resolve(__dirname, '../src/templates/index.html'),
       inject: true,
-      chunks: ['app', 'common']
+      chunks: ['main', 'common']
     }),
 
     new MiniCssExtractPlugin({
@@ -130,6 +137,8 @@ module.exports = {
     new CleanWebpackPlugin(),
 
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+    new webpack.HotModuleReplacementPlugin(),
 
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
