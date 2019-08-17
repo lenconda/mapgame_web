@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Button from '../../components/Button';
+import Bookmark from '../../components/Bookmark';
 import './index.scss';
 
 interface GamingPageProps extends RouteComponentProps {}
 
-type GameSelectionType = 'twoChooseOne' | 'foruChooseOne';
+type GameSelectionType = 'twoChooseOne' | 'foruChooseOne' | '';
 
 const Gaming = (props: GamingPageProps): JSX.Element => {
-  const [gameSelectionType, setGameSelectionType] = useState<GameSelectionType>('foruChooseOne');
+  const [gameSelectionType, setGameSelectionType] = useState<GameSelectionType>('');
 
   const TwoChooseOne = (): JSX.Element => {
     return (
@@ -45,6 +46,12 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
 
   return (
     <div className={gameSelectionType === 'twoChooseOne' ? 'bg-orange-blue' : 'bg-blue-orange'}>
+      <Bookmark background={gameSelectionType === 'twoChooseOne' ? 'blue' : 'pink'} className="level">
+        <span className="name">
+          <span className="name-text">关卡</span>1
+        </span>
+      </Bookmark>
+
       <div className="grade-container">
         分数：<span className="grade-number">20</span>
       </div>

@@ -75,3 +75,15 @@
     margin-bottom: 14px;
   }
 }
+
+.level {
+  position: absolute;
+  right: -8px;
+  top: 20px;
+
+  & > .name {
+    & > .name-text {
+      margin-right: 9px;
+    }
+  }
+}
