@@ -26,27 +26,28 @@
   font-style: normal;
 }
 
-.bg-orange-blue {
+.bg {
   height: 100%;
   position: relative;
-  background: url('/assets/img/bg_orange_blue.png') 100% / 100% no-repeat;
-}
+  box-sizing: border-box;
+  padding-bottom: 53.2px;
+  display: flex;
+  align-items: flex-end;
 
-.bg-blue-orange {
-  height: 100%;
-  position: relative;
-  background: url('/assets/img/bg_blue_orange.png') 100% / 100% no-repeat;
+  &.orange-blue {
+    background: url('/assets/img/bg_orange_blue.png') 100% / 100% no-repeat;
+  }
+
+  &.blue-orange {
+    background: url('/assets/img/bg_blue_orange.png') 100% / 100% no-repeat;
+  }
 }
 
 .content-card {
   width: 84.54%;
-  height: 81.5%;
+  height: 87.87%;
   margin: 0 auto;
-  position: absolute;
   background-color: #fff;
-  bottom: 53.2px;
-  left: 50%;
-  transform: translateX(-50%);
   border-radius: 15px; /*px*/
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 }
