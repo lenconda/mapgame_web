@@ -1,0 +1,19 @@
+.mg-bookmark {
+  height: 43.6px;
+  width: auto;
+  padding-left: 37.6px;
+  padding-right: 21px;
+  font-size: 15px;
+  line-height: 37.6px;
+  padding-top: 3px;
+  color: #fff;
+  font-family: 'source_regular';
+
+  &.pink {
+    background: url('/assets/img/bookmark_pink.png') 100% / 100% no-repeat;
+  }
+
+  &.blue {
+    background: url('/assets/img/bookmark_blue.png') 100% / 100% no-repeat;
+  }
+}
