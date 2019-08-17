@@ -7,57 +7,66 @@
   height: 207px;
 }
 
-.brief-container {
-  font-size: 28px;
-  color: #707070;
-  font-family: 'source_medium';
-  position: absolute;
-  padding: 0 25px;
+.rank-result {
+  height: 46.667%;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  top: 159.2px;
 
-  &.grade {
-    top: 159.2px;
+  & > .brief-container {
+    font-size: 28px;
+    color: #707070;
+    font-family: 'source_medium';
+    padding: 0 25px;
+    width: 100%;
+    box-sizing: border-box;
 
-    & > .brief-title {
-      margin-bottom: 11px;
+    &:first-child {
+      margin-bottom: 51px;
     }
 
-    & > .brief-content {
-      font-size: 45px;
-      line-height: 45px;
-      text-align: center;
+    &.grade {
+      & > .brief-title {
+        margin-bottom: 11px;
+      }
 
-      & > .brief-grade-number {
-        font-size: 70px;
-        line-height: 84px;
-        color: #fd796b;
-        display: inline-block;
-        margin-right: 18px;
-        font-family: 'tensent';
+      & > .brief-content {
+        font-size: 45px;
+        line-height: 45px;
+        text-align: center;
+
+        & > .brief-grade-number {
+          font-size: 70px;
+          line-height: 84px;
+          color: #fd796b;
+          display: inline-block;
+          margin-right: 18px;
+          font-family: 'tensent';
+        }
       }
     }
-  }
 
-  &.rank {
-    top: 333.2px;
-
-    & > .brief-title {
-      margin-bottom: 15px;
-    }
-
-    & > .brief-content {
-      font-size: 28px;
-      line-height: 28px;
-      text-align: center;
-
-      & > .brief-grade-number {
-        font-size: 50px;
-        line-height: 60px;
-        color: #fd796b;
-        display: inline-block;
-        margin-right: 15px;
-        font-family: 'tensent';
+    &.rank {
+      & > .brief-title {
+        margin-bottom: 15px;
+      }
+  
+      & > .brief-content {
+        font-size: 28px;
+        line-height: 28px;
+        text-align: center;
+  
+        & > .brief-grade-number {
+          font-size: 50px;
+          line-height: 60px;
+          color: #fd796b;
+          display: inline-block;
+          margin-right: 15px;
+          font-family: 'tensent';
+        }
       }
     }
   }
