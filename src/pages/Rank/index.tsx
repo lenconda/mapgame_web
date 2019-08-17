@@ -27,7 +27,7 @@ const Rank = (props: RankPageProps): JSX.Element => {
           </div>
         </section>
 
-        <Button className="start-game-button" largeFont>再玩一次</Button>
+        <Button className="again-game-button" largeFont>再玩一次</Button>
       </div>
     </div>
   );

@@ -7,9 +7,14 @@
   height: 207px;
 }
 
+.content-card {
+  position: relative;
+}
+
 .rank-result {
-  height: 46.667%;
+  height: 48.667%;
   width: 100%;
+  padding-bottom: 12px;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -72,11 +77,11 @@
   }
 }
 
-.start-game-button {
+.again-game-button {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 62.8px;
+  bottom: 10.467%;
 }
 
 .logo-text {
