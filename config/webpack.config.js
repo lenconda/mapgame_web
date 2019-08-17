@@ -11,9 +11,6 @@ const env = require('./env.config');
 
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
     path.resolve(__dirname, '../src/index.tsx')
   ],
 
