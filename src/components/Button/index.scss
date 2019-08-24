@@ -83,7 +83,7 @@
     background-color: #3c5d8e;
   }
 
-  &:disabled {
+  &.incorrect:disabled, &.correct:disabled {
     background-color: #ffe79a;
     color: #707070;
   }

@@ -8,6 +8,7 @@ interface ButtonComponentProps {
   largeFont?: boolean;
   width?: 'auto' | 'fixed';
   result?: 'correct' | 'incorrect' | '';
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -16,6 +17,7 @@ const Button = ({
   largeFont = false,
   width = 'fixed',
   result = '',
+  disabled = false,
   ...props
 }: ButtonComponentProps): JSX.Element => {
   const buttonClassNameString = `
@@ -27,7 +29,7 @@ const Button = ({
   `;
 
   return (
-    <button className={`mg-button ${buttonClassNameString}`} disabled={!!result}>
+    <button className={`mg-button ${buttonClassNameString}`} disabled={!!result || disabled}>
       {props.children}
     </button>
   );
