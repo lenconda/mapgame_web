@@ -13,12 +13,17 @@ const Rank = (props: RankPageProps): JSX.Element => {
         <img className="logo-house" src="/assets/img/logo_rank.png" alt="House" />
 
         <section className="rank-result">
+          <div className="brief-container player">
+            No.<span className="brief-player-number">100</span> 玩家
+          </div>
+
           <div className="brief-container grade">
-            <p className="brief-title">你的得分是：</p>
+            <p className="brief-title">您的得分是：</p>
             <p className="brief-content">
               <span className="brief-grade-number">100</span>分
             </p>
           </div>
+
           <div className="brief-container rank">
             <p className="brief-title">超过全校</p>
             <p className="brief-content">

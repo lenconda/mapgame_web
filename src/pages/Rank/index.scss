@@ -19,7 +19,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
-  top: 159.2px;
+  top: 163.2px;
 
   & > .brief-container {
     font-size: 28px;
@@ -33,9 +33,20 @@
       margin-bottom: 51px;
     }
 
+    &.player {
+      font-size: 24px;
+      margin-bottom: 12px;
+
+      & > .brief-player-number {
+        color: #fd796b;
+      }
+    }
+
     &.grade {
+      margin-bottom: 21px;
+
       & > .brief-title {
-        margin-bottom: 11px;
+        margin-bottom: 9px;
       }
 
       & > .brief-content {
