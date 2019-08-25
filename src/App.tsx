@@ -1,5 +1,6 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import './App.scss';
+import http from './utils/http';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Loading from './effects/Loading';
 
@@ -8,6 +9,16 @@ const Rank = React.lazy(() => import('./pages/Rank'));
 const Gaming = React.lazy(() => import('./pages/Gaming'));
 
 const App = (): JSX.Element => {
+  useEffect(() => {
+    http
+      .get('/api/auth')
+      .then(res => {
+        if (res) {
+          localStorage.setItem('token', res.data.data.token);
+        }
+      });
+  }, []);
+
   return (
     <Suspense fallback={<Loading />}>
       <Router>
