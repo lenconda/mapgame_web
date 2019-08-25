@@ -1,17 +1,48 @@
 import React from 'react';
 import Button from '../../components/Button';
 
-const FourChooseOne = (): JSX.Element => {
+interface FourChooseOneComponentProps {
+  imgUrl: string;
+  selected: string;
+  answer: string;
+  selections: string[];
+  onSubmit: (answer: string) => any;
+}
+
+const FourChooseOne = ({
+  selected = '',
+  answer = '',
+  ...props
+}: FourChooseOneComponentProps): JSX.Element => {
+  const selectionPrefix = ['A', 'B', 'C', 'D'];
+
+  const generateResult = (selected: string, answer: string, current: string): 'correct' | 'incorrect' | '' => {
+    if (selected === '' || answer === '' || (current !== selected && current !== answer)) { return '' }
+    else if (selected === answer) {
+      return current === answer ? 'correct' : '';
+    } else {
+      return current === answer ? 'correct' : 'incorrect';
+    }
+  };
+
   return (
     <div>
       <div className="image-box">
-        <img src="" alt="pic1" width="100%" height="100%" />
+        <img src={props.imgUrl} alt="picture" width="100%" height="100%" />
       </div>
       <div className="options-container">
-        <Button>A.润溪湖</Button>
-        <Button>B.图书馆</Button>
-        <Button>C.综合实验大楼</Button>
-        <Button>D.建工楼</Button>
+        {
+          props.selections.map((value, index) => (
+            <Button
+              key={index}
+              disabled={selected !== ''}
+              result={generateResult(selected, answer, value)}
+              onClick={() => props.onSubmit(value)}
+            >
+              <>{selectionPrefix[index]}.{value}</>
+            </Button>
+          ))
+        }
       </div>
     </div>
   );
