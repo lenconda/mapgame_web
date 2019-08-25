@@ -9,6 +9,7 @@ interface ButtonComponentProps {
   width?: 'auto' | 'fixed';
   result?: 'correct' | 'incorrect' | '';
   disabled?: boolean;
+  onClick?: () => any;
 }
 
 const Button = ({
@@ -29,7 +30,7 @@ const Button = ({
   `;
 
   return (
-    <button className={`mg-button ${buttonClassNameString}`} disabled={!!result || disabled}>
+    <button className={`mg-button ${buttonClassNameString}`} onClick={props.onClick} disabled={!!result || disabled}>
       {props.children}
     </button>
   );
