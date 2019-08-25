@@ -62,8 +62,9 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
               }
               setGameCurrentLevel(gameCurrentLevel + 1);
               setCurrentQuestionAnswer('');
+              setCurrentSelectedAnswer('');
             }
-          }, 1500);
+          }, 1250);
         }
       });
   };

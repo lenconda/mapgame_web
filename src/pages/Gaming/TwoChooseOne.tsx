@@ -13,10 +13,12 @@ const TwoChooseOne = ({
   answer = '',
   ...props
 }: TwoChooseOneComponentProps): JSX.Element => {
-  const generateResult = (selected: string, answer: string): 'correct' | 'incorrect' | '' => {
+  const generateResult = (selected: string, answer: string, current: string): 'correct' | 'incorrect' | '' => {
     if (selected === '' || answer === '') { return '' }
-    else {
-      return selected === answer ? 'correct' : 'incorrect';
+    else if (selected === answer) {
+      return current === answer ? 'correct' : '';
+    } else {
+      return current === answer ? 'correct' : 'incorrect';
     }
   };
 
@@ -32,7 +34,7 @@ const TwoChooseOne = ({
       <div className="buttons-container">
         <Button
           width="auto"
-          result={generateResult(selected, answer)}
+          result={generateResult(selected, answer, 'yes')}
           disabled={selected !== ''}
           onClick={() => props.onSubmit('yes')}
         >
@@ -41,7 +43,7 @@ const TwoChooseOne = ({
         <Button
           width="auto"
           disabled={selected !== ''}
-          result={generateResult(selected, answer)}
+          result={generateResult(selected, answer, 'no')}
           onClick={() => props.onSubmit('no')}
         >
           否
