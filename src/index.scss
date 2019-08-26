@@ -1,27 +1,35 @@
 @font-face {
   font-family: 'source_regular';
-  src: url('/assets/fonts/source_regular.otf');
+  src: url('/assets/fonts/source_regular.eot');
+  src: 
+    url('/assets/fonts/source_regular.eot') format('embedded-opentype'),
+    url('/assets/fonts/source_regular.woff') format('woff'),
+    url('/assets/fonts/source_regular.ttf') format('truetype'),
+    url('/assets/fonts/source_regular.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'source_medium';
-  src: url('/assets/fonts/source_medium.otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'source_normal';
-  src: url('/assets/fonts/source_normal.otf');
+  src: url('/assets/fonts/source_medium.eot');
+  src:
+    url('/assets/fonts/source_medium.eot') format('embedded-opentype'),
+    url('/assets/fonts/source_medium.woff') format('woff'),
+    url('/assets/fonts/source_medium.ttf') format('truetype'),
+    url('/assets/fonts/source_medium.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'tensent';
-  src: url('/assets/fonts/tensent_type.ttf');
+  src: url('/assets/fonts/tensent_type.eot');
+  src:
+    url('/assets/fonts/tensent_type.eot') format('embedded-opentype'),
+    url('/assets/fonts/tensent_type.woff') format('woff'),
+    url('/assets/fonts/tensent_type.ttf') format('truetype'),
+    url('/assets/fonts/tensent_type.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
