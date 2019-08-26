@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../components/Button';
 
 interface FourChooseOneComponentProps {
+  correct: boolean;
   imgUrl: string;
   selected: string;
   answer: string;
@@ -18,7 +19,7 @@ const FourChooseOne = ({
 
   const generateResult = (selected: string, answer: string, current: string): 'correct' | 'incorrect' | '' => {
     if (selected === '' || answer === '' || (current !== selected && current !== answer)) { return '' }
-    else if (selected === answer) {
+    if (props.correct) {
       return current === answer ? 'correct' : '';
     } else {
       return current === answer ? 'correct' : 'incorrect';

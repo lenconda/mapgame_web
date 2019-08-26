@@ -15,6 +15,7 @@ const App = (): JSX.Element => {
       .then(res => {
         if (res) {
           localStorage.setItem('token', res.data.data.token);
+          localStorage.setItem('user_id', res.data.data.user_id);
         }
       });
   }, []);

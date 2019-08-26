@@ -15,23 +15,26 @@ const TwoChooseOne = React.lazy(() => import('./TwoChooseOne'));
 const Gaming = (props: GamingPageProps): JSX.Element => {
   const [gameSelectionType, setGameSelectionType] = useState<GameSelectionType>('');
   const [gameQuestionSelections, setGameQuestionSelections] = useState<string[]>([]);
-  const [gameQuestionImages, setGameQuestionImages] = useState<string | string[]>('');
+  const [gameQuestionImages, setGameQuestionImages] = useState<string[]>([]);
   const [gameCurrentScore, setGameCurrentScore] = useState<number>(0);
   const [gameCurrentLevel, setGameCurrentLevel] = useState<number>(1);
   const [isLastLevelOfGame, setIsLastLevelOfGame] = useState<boolean>(false);
   const [currentQuestionAnswer, setCurrentQuestionAnswer] = useState<string>('');
   const [currentSelectedAnswer, setCurrentSelectedAnswer] = useState<string>('');
+  const [currentQuestionCorrection, setCurrentQuestionCorrection] = useState<boolean>(false);
 
   useEffect(() => {
     http
       .get('/api/question')
       .then(res => {
         if (res) {
-          setGameQuestionImages(res.data.data.img_url);
+          setGameQuestionImages(res.data.data.img_urls);
           setGameQuestionSelections(res.data.data.selections);
-          if (Array.isArray(res.data.data.img_url)) {
+
+          if (res.data.data.type === '判断') {
             setGameSelectionType('twoChooseOne');
-          } else {
+          }
+          if (res.data.data.type === '单选') {
             setGameSelectionType('fourChooseOne');
           }
         }
@@ -45,19 +48,24 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
       .post('/api/submit', { answer })
       .then(res => {
         if (res) {
-          setIsLastLevelOfGame(res.data.data.is_finish);
-          setGameCurrentScore(res.data.data.score);
-          setCurrentQuestionAnswer(res.data.data.answer);
+          setIsLastLevelOfGame(res.data.data.record.is_finish || res.data.data.is_finish);
+          setGameCurrentScore(res.data.data.record.score || res.data.data.score);
+
+          if (res.data.data.result) {
+            setCurrentQuestionAnswer(res.data.data.result.correct_answer);
+            setCurrentQuestionCorrection(res.data.data.result.correct);
+          }
 
           setTimeout(() => {
             if (isLastLevelOfGame) {
               props.history.push('/rank');
             } else {
-              setGameQuestionImages(res.data.data.current_question.img_url);
-              setGameQuestionSelections(res.data.data.current_question.selections);
-              if (Array.isArray(res.data.data.current_question.img_url)) {
+              setGameQuestionImages(res.data.data.record.img_urls);
+              setGameQuestionSelections(res.data.data.record.selections);
+              if (res.data.data.record.type === '判断') {
                 setGameSelectionType('twoChooseOne');
-              } else {
+              }
+              if (res.data.data.record.type === '单选') {
                 setGameSelectionType('fourChooseOne');
               }
               setGameCurrentLevel(gameCurrentLevel + 1);
@@ -92,9 +100,10 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
         </h1>
         <section className={`question-content ${(gameSelectionType === 'twoChooseOne') && 'two-choose-one'}`}>
           {
-            (gameSelectionType === 'twoChooseOne' && Array.isArray(gameQuestionImages)) && (
+            (gameSelectionType === 'twoChooseOne') && (
               <Suspense fallback={<Loading />}>
                 <TwoChooseOne
+                  correct={currentQuestionCorrection}
                   imgUrl={gameQuestionImages}
                   onSubmit={answer => handleSubmitQuestionAnswer(answer)}
                   selected={currentSelectedAnswer}
@@ -104,10 +113,11 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
             )
           }
           {
-            (gameSelectionType === 'fourChooseOne' && typeof gameQuestionImages === 'string') && (
+            (gameSelectionType === 'fourChooseOne') && (
               <Suspense fallback={<Loading />}>
                 <FourChooseOne
-                  imgUrl={gameQuestionImages}
+                  correct={currentQuestionCorrection}
+                  imgUrl={gameQuestionImages[0]}
                   selections={gameQuestionSelections}
                   selected={currentSelectedAnswer}
                   answer={currentQuestionAnswer}

@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../components/Button';
 
 interface TwoChooseOneComponentProps {
+  correct: boolean;
   imgUrl: string[];
   selected: string;
   answer: string;
@@ -15,7 +16,7 @@ const TwoChooseOne = ({
 }: TwoChooseOneComponentProps): JSX.Element => {
   const generateResult = (selected: string, answer: string, current: string): 'correct' | 'incorrect' | '' => {
     if (selected === '' || answer === '') { return '' }
-    else if (selected === answer) {
+    if (props.correct) {
       return current === answer ? 'correct' : '';
     } else {
       return current === answer ? 'correct' : 'incorrect';
@@ -34,17 +35,17 @@ const TwoChooseOne = ({
       <div className="buttons-container">
         <Button
           width="auto"
-          result={generateResult(selected, answer, 'yes')}
+          result={generateResult(selected, answer, '是')}
           disabled={selected !== ''}
-          onClick={() => props.onSubmit('yes')}
+          onClick={() => props.onSubmit('是')}
         >
           是
         </Button>
         <Button
           width="auto"
           disabled={selected !== ''}
-          result={generateResult(selected, answer, 'no')}
-          onClick={() => props.onSubmit('no')}
+          result={generateResult(selected, answer, '否')}
+          onClick={() => props.onSubmit('否')}
         >
           否
         </Button>
