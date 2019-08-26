@@ -18,7 +18,6 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
   const [gameQuestionImages, setGameQuestionImages] = useState<string[]>([]);
   const [gameCurrentScore, setGameCurrentScore] = useState<number>(0);
   const [gameCurrentLevel, setGameCurrentLevel] = useState<number>(1);
-  const [isLastLevelOfGame, setIsLastLevelOfGame] = useState<boolean>(false);
   const [currentQuestionAnswer, setCurrentQuestionAnswer] = useState<string>('');
   const [currentSelectedAnswer, setCurrentSelectedAnswer] = useState<string>('');
   const [currentQuestionCorrection, setCurrentQuestionCorrection] = useState<boolean>(false);
@@ -48,8 +47,8 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
       .post('/api/submit', { answer })
       .then(res => {
         if (res) {
-          setIsLastLevelOfGame(res.data.data.record.is_finish || res.data.data.is_finish);
-          setGameCurrentScore(res.data.data.record.score || res.data.data.score);
+          setGameCurrentScore(res.data.data.record.score);
+          localStorage.setItem('percent', res.data.data.record.percent || 0);
 
           if (res.data.data.result) {
             setCurrentQuestionAnswer(res.data.data.result.correct_answer);
@@ -57,7 +56,7 @@ const Gaming = (props: GamingPageProps): JSX.Element => {
           }
 
           setTimeout(() => {
-            if (isLastLevelOfGame) {
+            if (res.data.data.record.is_finish) {
               props.history.push('/rank');
             } else {
               setGameQuestionImages(res.data.data.record.img_urls);
