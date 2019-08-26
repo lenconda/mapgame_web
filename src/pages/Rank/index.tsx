@@ -22,7 +22,7 @@ const Rank = (props: RankPageProps): JSX.Element => {
   return (
     <div className="bg blue-orange">
       <img className="logo-text" src="/assets/img/logo_text.png" alt="地图猜猜猜" />
-      <div className="content-card">
+      <div className="content-card rank">
         <img className="logo-house" src="/assets/img/logo_rank.png" alt="House" />
 
         <section className="rank-result">
