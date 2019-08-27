@@ -43,7 +43,17 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    hot: true
+    hot: true,
+    proxy: {
+      '/api': {
+        target: 'https://map.exql.top',
+        secure: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      }
+    }
   },
 
   module: {

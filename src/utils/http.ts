@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://easy-mock.com/mock/5d625f7c9909a25cee00fae9/mapgame';
+// axios.defaults.baseURL = 'https://map.exql.top';
 axios.defaults.timeout = 3600000;
 axios.interceptors.request.use(config => {
   config.headers = {
